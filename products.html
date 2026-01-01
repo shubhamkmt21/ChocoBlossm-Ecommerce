@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Fine Chocolates | Choco Blossom India</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Specific Styles for Products Page */
+        .products-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: var(--spacing-lg);
+            padding: var(--spacing-lg) 0;
+        }
+
+        .filters {
+            background: #fff;
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .filter-group {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .filter-group h3 {
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-sm);
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 0.5rem;
+        }
+
+        .filter-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            color: var(--color-text-muted);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .filter-list li:hover {
+            color: var(--color-primary);
+        }
+
+        .checkbox {
+            width: 16px;
+            height: 16px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .checkbox::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            font-size: 10px;
+            color: #fff;
+            display: none;
+        }
+
+        .filter-list li.active .checkbox {
+            background-color: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+
+        .filter-list li.active .checkbox::after {
+            display: block;
+        }
+
+        .sort-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        @media (max-width: 768px) {
+            .products-container {
+                grid-template-columns: 1fr;
+            }
+
+            .filters {
+                display: none;
+                /* Hide filters on mobile for now */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="logo.jpg" alt="Choco Blossom Logo">
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html" class="active">Collections</a>
+                <a href="about.html">Our Story</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="nav-icons">
+                <a href="#" class="search-icon"><i class="fas fa-search"></i></a>
+                <a href="#" class="user-icon"><i class="fas fa-user"></i></a>
+                <a href="cart.html" class="cart-icon" id="cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span id="cart-count">(0)</span>
+                </a>
+                <div class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="section" style="background: var(--color-background); padding: 120px 0 40px; text-align: center;">
+        <div class="container">
+            <h1>Our Collections</h1>
+            <p style="max-width: 600px; margin: 0 auto;">Explore our range of handcrafted chocolates, from intense dark
+                bars to festive gift hampers.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <!-- React Application Root -->
+    <div id="product-root" class="container" style="margin-top: 2rem; min-height: 60vh;"></div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="logo.jpg" alt="Choco Blossom"
+                        style="width: 140px; margin-bottom: 1rem; border-radius: 8px;">
+                    <p style="color: rgba(255,255,255,0.7);">Crafting memories with premium chocolates since 2010. Based
+                        in Mumbai, delivering happiness nationwide.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Shop All</a></li>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Customer Care</h4>
+                    <ul class="footer-links">
+                        <li><a href="shipping.html">Shipping Policy</a></li>
+                        <li><a href="returns.html">Returns & Refunds</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="#">Track Order</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-links">
+                        <li style="color: rgba(255,255,255,0.8); display: flex; gap: 10px;">
+                            <i class="fas fa-map-marker-alt" style="margin-top: 5px;"></i>
+                            <span>28, Saurasthra Society, Paldi, Ahmedabad, Gujarat 380007</span>
+                        </li>
+                        <li style="color: rgba(255,255,255,0.8);"><i class="fas fa-phone" style="width: 20px;"></i> +91
+                            92270 88688</li>
+                        <li style="color: rgba(255,255,255,0.8);"><i class="fas fa-envelope" style="width: 20px;"></i>
+                            chocoblossom12@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div style="text-align: left;">
+                    <p>&copy; 2026 Choco Blossom. All rights reserved.</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.2rem;">Based in Ahmedabad, Gujarat</p>
+                </div>
+                <div class="payment-icons">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-amex"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <!-- React & Babel CDNs -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- React Product Component -->
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        function ProductApp() {
+            const [products, setProducts] = useState([]);
+            const [loading, setLoading] = useState(true);
+            const [filter, setFilter] = useState('All Products');
+            const [priceFilter, setPriceFilter] = useState('');
+
+            useEffect(() => {
+                fetchProducts();
+            }, [filter, priceFilter]);
+
+            const fetchProducts = async () => {
+                setLoading(true);
+                try {
+                    // Build query string
+                    let url = `http://localhost:3000/api/products?category=${encodeURIComponent(filter)}`;
+                    if (priceFilter) {
+                        url += `&priceRange=${encodeURIComponent(priceFilter)}`;
+                    }
+
+                    const response = await fetch(url);
+                    const json = await response.json();
+
+                    if (json.styles === 'error') {
+                        console.error(json.message);
+                        setProducts([]);
+                    } else {
+                        // The API returns { data: [...] }
+                        setProducts(json.data || []);
+                    }
+                } catch (error) {
+                    console.error("Failed to fetch products", error);
+                } finally {
+                    setLoading(false);
+                }
+            };
+
+            const handleAddToCart = (product) => {
+                if (window.addToCart) {
+                    window.addToCart(product);
+                }
+            };
+
+            return (
+                <div className="container products-container">
+                    <aside className="filters" style={{ display: 'block' }}>
+                        <div className="filter-group">
+                            <h3>Categories</h3>
+                            <ul className="filter-list">
+                                {['All Products', 'Truffles', 'Bars', 'Gift Boxes', 'Vegan'].map(cat => (
+                                    <li
+                                        key={cat}
+                                        className={filter === cat ? 'active' : ''}
+                                        onClick={() => setFilter(cat)}
+                                    >
+                                        <span className="checkbox"></span>{cat}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className="filter-group">
+                            <h3>Price Range</h3>
+                            <ul className="filter-list">
+                                {[
+                                    { label: 'All Prices', val: '' },
+                                    { label: 'Under ₹500', val: 'under-500' },
+                                    { label: '₹500 - ₹1000', val: '500-1000' },
+                                    { label: 'Above ₹1000', val: 'above-1000' }
+                                ].map(p => (
+                                    <li
+                                        key={p.label}
+                                        className={priceFilter === p.val ? 'active' : ''}
+                                        onClick={() => setPriceFilter(p.val)}
+                                    >
+                                        <span className="checkbox"></span>{p.label}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </aside>
+
+                    <main style={{ flex: 1 }}>
+                        <div className="sort-bar">
+                            <div>{loading ? 'Loading...' : `${products.length} Products Found`}</div>
+                        </div>
+
+                        {loading ? (
+                            <div style={{ gridColumn: '1/-1', textAlign: 'center' }}>Loading chocolates...</div>
+                        ) : (
+                            <div className="product-grid">
+                                {products.map(p => (
+                                    <div key={p.id} className="product-card">
+                                        <div className="product-image">
+                                            <img src={p.image} alt={p.name} />
+                                        </div>
+                                        <div className="product-info">
+                                            <div className="product-category">{p.category}</div>
+                                            <h3 className="product-title">{p.name}</h3>
+                                            <div className="product-price">₹{p.price}</div>
+                                            <button className="add-btn" onClick={() => handleAddToCart(p)}>
+                                                Add to Cart
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </main>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('product-root'));
+        root.render(<ProductApp />);
+    </script>
+    <script>
+        // Disable default script.js fetch logic
+        window.fetchProducts = () => { }; 
+    </script>
+</body>
+
+</html>

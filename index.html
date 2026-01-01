@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choco Blossom India | Premium Handcrafted Chocolates</title>
+    <meta name="description"
+        content="Experience the finest handcrafted chocolates at Choco Blossom India. Perfect for gifts, festivals, and self-indulgence.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="logo.jpg" alt="Choco Blossom Logo">
+                </a>
+            </div>
+
+            <nav class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="products.html">Collections</a>
+                <a href="about.html">Our Story</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <div class="nav-icons">
+                <a href="#" class="search-icon"><i class="fas fa-search"></i></a>
+                <a href="#" class="user-icon"><i class="fas fa-user"></i></a>
+                <a href="cart.html" class="cart-icon" id="cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span id="cart-count">(0)</span>
+                </a>
+                <div class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Live Wallpaper (Video Background) -->
+        <video autoplay muted loop playsinline
+            poster="https://images.unsplash.com/photo-1511381939415-e44015466834?auto=format&fit=crop&q=80">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-pouring-melted-chocolate-3112-large.mp4"
+                type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <div class="hero-content">
+            <h1>Indulge in Pure Luxury</h1>
+            <p>Handcrafted premium chocolates made with the finest cocoa. The perfect gift for every occasion.</p>
+            <a href="products.html" class="btn btn-primary">Shop Collection</a>
+        </div>
+    </section>
+
+    <!-- Trust/USP Bar -->
+    <div class="usp-bar reveal">
+        <div class="usp-item">
+            <i class="fas fa-truck-fast"></i>
+            <span>Free Shipping > ₹2500</span>
+        </div>
+        <div class="usp-item">
+            <i class="fas fa-certificate"></i>
+            <span>100% Handcrafted</span>
+        </div>
+        <div class="usp-item">
+            <i class="fas fa-shield-alt"></i>
+            <span>Secure Checks</span>
+        </div>
+        <div class="usp-item">
+            <i class="fas fa-leaf"></i>
+            <span>Sustainably Sourced</span>
+        </div>
+    </div>
+
+    <!-- Spotlight / Limited Edition -->
+    <section class="spotlight-section reveal">
+        <div class="container">
+            <div class="spotlight-grid">
+                <div class="spotlight-image reveal">
+                    <img src="https://images.unsplash.com/photo-1614088685112-0a760b7163c5?auto=format&fit=crop&q=80&w=800"
+                        alt="Gold Truffle"
+                        onerror="this.src='https://placehold.co/600x400/3E2723/FFF?text=Gold+Truffle'">
+                </div>
+                <div class="spotlight-content reveal" style="transition-delay: 0.2s;">
+                    <span class="spotlight-badge">Limited Release</span>
+                    <h2>The Royal Saffron & Gold Truffle</h2>
+                    <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Experience the decadence of Kashmiri Saffron
+                        infused white chocolate, hand-rolled and dusted with edible 24-karat gold leaf. An exclusive
+                        flavor available only for a short time.</p>
+
+                    <div class="countdown">
+                        <div class="countdown-item">
+                            <div class="countdown-num" id="days">02</div>
+                            <div class="countdown-label">Days</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-num" id="hours">14</div>
+                            <div class="countdown-label">Hours</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-num" id="minutes">45</div>
+                            <div class="countdown-label">Mins</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-num" id="seconds">12</div>
+                            <div class="countdown-label">Secs</div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem;">
+                        <button class="btn btn-primary">Pre-Order Now</button>
+                        <button class="btn btn-outline">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bestsellers -->
+    <section class="section reveal" style="background-color: #fff;">
+        <div class="container">
+            <h2 class="text-center">Bestsellers</h2>
+            <div class="text-center">
+                <img src="https://cdn-icons-png.flaticon.com/512/1047/1047711.png" width="40"
+                    style="margin: 0 auto 2rem; opacity: 0.5;" alt="divider">
+            </div>
+
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card reveal">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1548907040-4baa42d10919?auto=format&fit=crop&q=80&w=800"
+                            alt="Truffle Box">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Gift Boxes</div>
+                        <h3 class="product-title">Royal Truffle Collection</h3>
+                        <div class="product-price">₹1,299</div>
+                        <button class="add-btn"
+                            onclick='addToCart({id: 1, name: "Royal Truffle Collection", price: 1299, image: "https://images.unsplash.com/photo-1548907040-4baa42d10919?auto=format&fit=crop&q=80&w=800"})'>Add
+                            to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card reveal" style="transition-delay: 0.1s;">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1511381978829-2c3a7e937b46?auto=format&fit=crop&q=80&w=800"
+                            alt="Dark Chocolate">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Bars</div>
+                        <h3 class="product-title">85% Dark Intense</h3>
+                        <div class="product-price">₹450</div>
+                        <button class="add-btn"
+                            onclick='addToCart({id: 2, name: "85% Dark Intense", price: 450, image: "https://images.unsplash.com/photo-1511381978829-2c3a7e937b46?auto=format&fit=crop&q=80&w=800"})'>Add
+                            to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card reveal" style="transition-delay: 0.2s;">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1621939514649-28b12e81156d?auto=format&fit=crop&q=80&w=800"
+                            alt="Assorted Box">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Assorted</div>
+                        <h3 class="product-title">Family Celebration Pack</h3>
+                        <div class="product-price">₹2,499</div>
+                        <button class="add-btn"
+                            onclick='addToCart({id: 3, name: "Family Celebration Pack", price: 2499, image: "https://images.unsplash.com/photo-1621939514649-28b12e81156d?auto=format&fit=crop&q=80&w=800"})'>Add
+                            to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card reveal" style="transition-delay: 0.3s;">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1526081347589-7fa3cb41b4b2?auto=format&fit=crop&q=80&w=800"
+                            alt="Nuts & Berries">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Exotic</div>
+                        <h3 class="product-title">Nuts & Berries Medley</h3>
+                        <div class="product-price">₹899</div>
+                        <button class="add-btn"
+                            onclick='addToCart({id: 5, name: "Nuts & Berries Medley", price: 899, image: "https://images.unsplash.com/photo-1526081347589-7fa3cb41b4b2?auto=format&fit=crop&q=80&w=800"})'>Add
+                            to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 5 (New) -->
+                <div class="product-card reveal" style="transition-delay: 0.4s;">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1606312619070-d48b706521bf?auto=format&fit=crop&q=80&w=800"
+                            alt="Golden Signature">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Luxury</div>
+                        <h3 class="product-title">Golden Signature Box</h3>
+                        <div class="product-price">₹3,499</div>
+                        <button class="add-btn"
+                            onclick='addToCart({id: 6, name: "Golden Signature Box", price: 3499, image: "https://images.unsplash.com/photo-1606312619070-d48b706521bf?auto=format&fit=crop&q=80&w=800"})'>Add
+                            to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 6 (New) -->
+                <div class="product-card reveal" style="transition-delay: 0.5s;">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&q=80&w=800"
+                            alt="Praline Collection">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Gift Boxes</div>
+                        <h3 class="product-title">Hazelnut Praline Box</h3>
+                        <div class="product-price">₹1,500</div>
+                        <button class="add-btn"
+                            onclick='addToCart({id: 7, name: "Hazelnut Praline Box", price: 1500, image: "https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&q=80&w=800"})'>Add
+                            to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 7 (New) -->
+                <div class="product-card reveal" style="transition-delay: 0.6s;">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&q=80&w=800"
+                            alt="Ruby Chocolate">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Specialty</div>
+                        <h3 class="product-title">Ruby Raspberry Delight</h3>
+                        <div class="product-price">₹950</div>
+                        <button class="add-btn"
+                            onclick='addToCart({id: 8, name: "Ruby Raspberry Delight", price: 950, image: "https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&q=80&w=800"})'>Add
+                            to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 8 (New) -->
+                <div class="product-card reveal" style="transition-delay: 0.7s;">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1553452118-621e1f860f43?auto=format&fit=crop&q=80&w=800"
+                            alt="Matcha White">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Fusion</div>
+                        <h3 class="product-title">Matcha Ivory Bar</h3>
+                        <div class="product-price">₹850</div>
+                        <button class="add-btn"
+                            onclick='addToCart({id: 9, name: "Matcha Ivory Bar", price: 850, image: "https://images.unsplash.com/photo-1553452118-621e1f860f43?auto=format&fit=crop&q=80&w=800"})'>Add
+                            to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center reveal" style="margin-top: 3rem;">
+                <a href="products.html" class="btn btn-outline">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section container reveal">
+        <h2 class="text-center">Client Love</h2>
+        <div class="text-center">
+            <img src="https://cdn-icons-png.flaticon.com/512/1047/1047711.png" width="40"
+                style="margin: 0 auto 2rem; opacity: 0.5;" alt="divider">
+        </div>
+
+        <div class="collections-grid">
+            <div class="testimonial-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"Absolutely divine! The truffle collection boxes were the highlight of our
+                    Diwali party. Packaging was so premium."</p>
+                <div class="client-name">- Priya S., Mumbai</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"Brought these for my wife's birthday. She loved the dark chocolate
+                    intensity. Same day delivery was a lifesaver!"</p>
+                <div class="client-name">- Rahul K., Bangalore</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="testimonial-text">"The best vegan chocolate options I've found in India. The almond sea salt
+                    bar is my new addiction."</p>
+                <div class="client-name">- Anjali M., Delhi</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="section" style="background-color: var(--color-primary); color: #fff;">
+        <div class="container text-center">
+            <h2 style="color: var(--color-secondary);">Join the Club</h2>
+            <p style="color: rgba(255,255,255,0.8); margin-bottom: 2rem;">Subscribe to receive updates, access to
+                exclusive deals, and more.</p>
+            <form style="max-width: 500px; margin: 0 auto; display: flex; gap: 10px;">
+                <input type="email" placeholder="Enter your email address"
+                    style="flex: 1; padding: 1rem; border: none; border-radius: 4px; outline: none;">
+                <button type="submit" class="btn"
+                    style="background: var(--color-secondary); color: var(--color-primary);">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="logo.jpg" alt="Choco Blossom"
+                        style="width: 140px; margin-bottom: 1rem; border-radius: 8px;">
+                    <p style="color: rgba(255,255,255,0.7);">Crafting memories with premium chocolates since 2010. Based
+                        in Mumbai, delivering happiness nationwide.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Shop All</a></li>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Customer Care</h4>
+                    <ul class="footer-links">
+                        <li><a href="shipping.html">Shipping Policy</a></li>
+                        <li><a href="returns.html">Returns & Refunds</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="#">Track Order</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-links">
+                        <li style="color: rgba(255,255,255,0.8); display: flex; gap: 10px;">
+                            <i class="fas fa-map-marker-alt" style="margin-top: 5px;"></i>
+                            <span>28, Saurasthra Society, Paldi, Ahmedabad, Gujarat 380007</span>
+                        </li>
+                        <li style="color: rgba(255,255,255,0.8);"><i class="fas fa-phone" style="width: 20px;"></i> +91
+                            92270 88688</li>
+                        <li style="color: rgba(255,255,255,0.8);"><i class="fas fa-envelope" style="width: 20px;"></i>
+                            chocoblossom12@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div style="text-align: left;">
+                    <p>&copy; 2026 Choco Blossom. All rights reserved.</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.2rem;">Based in Ahmedabad, Gujarat</p>
+                </div>
+                <div class="payment-icons">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-amex"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Polyglot Analytics: Send data to Django Service (Python) 🐍
+        document.addEventListener('DOMContentLoaded', () => {
+            const pageData = {
+                page: window.location.pathname || 'home'
+            };
+
+            fetch('http://localhost:8000/api/analytics/track', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(pageData)
+            })
+                .then(res => res.json())
+                .then(data => console.log('Django Analytics:', data))
+                .catch(err => console.error('Django Analytics Error:', err));
+        });
+    </script>
+</body>
+
+</html>

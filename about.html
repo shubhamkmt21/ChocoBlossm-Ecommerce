@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story | Choco Blossom India</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="logo.jpg" alt="Choco Blossom Logo">
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">Collections</a>
+                <a href="about.html" class="active">Our Story</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="nav-icons">
+                <a href="#" class="search-icon"><i class="fas fa-search"></i></a>
+                <a href="#" class="user-icon"><i class="fas fa-user"></i></a>
+                <a href="#" class="cart-icon" id="cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span id="cart-count">(0)</span>
+                </a>
+                <div class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="section" style="background: var(--color-background); padding: 120px 0 60px; text-align: center;">
+        <div class="container">
+            <h1>The Choco Blossom Story</h1>
+            <p style="max-width: 600px; margin: 0 auto; font-style: italic;">"Where passion meets premium cocoa"</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="section">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-xl); align-items: center;">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?q=80&w=1000&auto=format"
+                        alt="Chocolate Making" style="border-radius: 8px; box-shadow: var(--shadow-md);">
+                </div>
+                <div>
+                    <h2 style="color: var(--color-secondary);">Crafted with Love in Mumbai</h2>
+                    <p>Founded in 2010, Choco Blossom India began with a simple mission: to bring world-class artisanal
+                        Belgian-style chocolates to Indian connoisseurs. What started as a small home kitchen project
+                        has now blossomed into a beloved brand known for its impeccable quality and innovative flavors.
+                    </p>
+                    <p>We source our cocoa beans from sustainable farms in Ghana and Madagascar, ensuring that every
+                        bite you take is ethical, rich, and truly authentic.</p>
+
+                    <div style="margin-top: 2rem;">
+                        <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                            <i class="fas fa-check-circle" style="color: var(--color-secondary); margin-top: 5px;"></i>
+                            <div>
+                                <strong>100% Handcrafted</strong>
+                                <p style="font-size: 0.9rem;">Every piece is molded and decorated by hand by our master
+                                    chocolatiers.</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                            <i class="fas fa-check-circle" style="color: var(--color-secondary); margin-top: 5px;"></i>
+                            <div>
+                                <strong>Ethically Sourced</strong>
+                                <p style="font-size: 0.9rem;">We support fair trade practices and sustainable farming.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="section" style="background-color: var(--color-primary); color: #fff;">
+        <div class="container">
+            <h2 class="text-center" style="color: var(--color-secondary); margin-bottom: 3rem;">Our Core Values</h2>
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-lg); text-align: center;">
+                <div style="padding: 2rem; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                    <i class="fas fa-star"
+                        style="font-size: 2rem; color: var(--color-secondary); margin-bottom: 1rem;"></i>
+                    <h3>Quality</h3>
+                    <p style="color: rgba(255,255,255,0.8);">We never compromise on ingredients. Only the best makes it
+                        into our boxes.</p>
+                </div>
+                <div style="padding: 2rem; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                    <i class="fas fa-heart"
+                        style="font-size: 2rem; color: var(--color-secondary); margin-bottom: 1rem;"></i>
+                    <h3>Passion</h3>
+                    <p style="color: rgba(255,255,255,0.8);">Chocolate making is art. We pour our heart into every
+                        creation.</p>
+                </div>
+                <div style="padding: 2rem; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                    <i class="fas fa-users"
+                        style="font-size: 2rem; color: var(--color-secondary); margin-bottom: 1rem;"></i>
+                    <h3>Community</h3>
+                    <p style="color: rgba(255,255,255,0.8);">We love our customers and strive to make every celebration
+                        sweeter.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <!-- Same Footer as Index -->
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="logo.jpg" alt="Choco Blossom"
+                        style="width: 140px; margin-bottom: 1rem; border-radius: 8px;">
+                    <p style="color: rgba(255,255,255,0.7);">Crafting memories with premium chocolates since 2010. Based
+                        in Mumbai, delivering happiness nationwide.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Shop All</a></li>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Customer Care</h4>
+                    <ul class="footer-links">
+                        <li><a href="shipping.html">Shipping Policy</a></li>
+                        <li><a href="returns.html">Returns & Refunds</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="#">Track Order</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-links">
+                        <li style="color: rgba(255,255,255,0.8); display: flex; gap: 10px;">
+                            <i class="fas fa-map-marker-alt" style="margin-top: 5px;"></i>
+                            <span>28, Saurasthra Society, Paldi, Ahmedabad, Gujarat 380007</span>
+                        </li>
+                        <li style="color: rgba(255,255,255,0.8);"><i class="fas fa-phone" style="width: 20px;"></i> +91
+                            92270 88688</li>
+                        <li style="color: rgba(255,255,255,0.8);"><i class="fas fa-envelope" style="width: 20px;"></i>
+                            chocoblossom12@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div style="text-align: left;">
+                    <p>&copy; 2026 Choco Blossom. All rights reserved.</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.2rem;">Based in Ahmedabad, Gujarat</p>
+                </div>
+                <div class="payment-icons">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-amex"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

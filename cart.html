@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Choco Blossom India</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .checkout-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 0;
+            min-height: 70vh;
+            margin-top: 80px;
+            /* Clear fixed header */
+        }
+
+        .checkout-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .checkout-steps::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #eee;
+            z-index: 0;
+        }
+
+        .step {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            background: #fff;
+            padding: 0 10px;
+        }
+
+        .step-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #eee;
+            color: #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .step.active .step-circle {
+            background: var(--color-primary);
+            color: #fff;
+        }
+
+        .step.completed .step-circle {
+            background: #4CAF50;
+            color: #fff;
+        }
+
+        .step-label {
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        .step.active .step-label {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        /* Form Styles */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        /* Summary Card */
+        .summary-card {
+            background: #fff;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .item-row,
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            color: #555;
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--color-primary);
+        }
+
+        /* Success Animation */
+        .success-view {
+            text-align: center;
+            padding: 3rem 1rem;
+            animation: fadeIn 0.5s;
+        }
+
+        .check-icon {
+            font-size: 4rem;
+            color: #4CAF50;
+            margin-bottom: 1.5rem;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0);
+            }
+
+            70% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: opacity 0.3s;
+        }
+
+        .fade-enter-from,
+        .fade-leave-to {
+            opacity: 0;
+        }
+
+        /* Premium Enhancements */
+        .summary-card {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .shiprocket-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 5px;
+            box-shadow: 0 2px 5px rgba(118, 75, 162, 0.3);
+        }
+
+        .delivery-info {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 10px;
+            margin-top: 5px;
+            font-size: 0.85rem;
+            border-left: 3px solid var(--color-secondary);
+        }
+
+        .payment-option-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid #eee;
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .payment-option-label:hover {
+            border-color: var(--color-primary);
+            background: #fffcf5;
+        }
+
+        input[type="radio"]:checked+span {
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+
+        /* Cart Item Styles */
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: #fff;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eee;
+        }
+
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+            border: 1px solid #eee;
+        }
+
+        .item-details {
+            flex: 1;
+        }
+
+        .item-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-primary);
+        }
+
+        .item-price {
+            color: var(--color-secondary);
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .quantity-controls {
+            display: inline-flex;
+            align-items: center;
+            background: #f5f5f5;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .qty-btn {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-weight: bold;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qty-btn:hover {
+            color: var(--color-primary);
+            background: #eee;
+        }
+
+        .quantity-controls span {
+            width: 30px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .remove-btn {
+            color: #ff4444;
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 0.5rem;
+            opacity: 0.7;
+            transition: 0.2s;
+        }
+
+        .remove-btn:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Layout Fixes */
+        .cart-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .cart-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cart-item img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container navbar">
+            <div class="logo"><a href="index.html"><img src="logo.jpg" alt="Choco Blossom Logo"></a></div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">Collections</a>
+                <a href="about.html">Our Story</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="nav-icons">
+                <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-bag"></i><span
+                        id="cart-count"></span></a>
+            </div>
+        </div>
+    </header>
+
+    <div id="checkout-app" class="container checkout-container">
+
+        <!-- Step Indicators -->
+        <div class="checkout-steps" v-if="step < 4">
+            <div class="step" :class="{ active: step === 1, completed: step > 1 }">
+                <div class="step-circle"><i class="fas fa-check" v-if="step > 1"></i><span v-else>1</span></div>
+                <div class="step-label">Cart</div>
+            </div>
+            <div class="step" :class="{ active: step === 2, completed: step > 2 }">
+                <div class="step-circle"><i class="fas fa-check" v-if="step > 2"></i><span v-else>2</span></div>
+                <div class="step-label">Address</div>
+            </div>
+            <div class="step" :class="{ active: step === 3, completed: step > 3 }">
+                <div class="step-circle"><i class="fas fa-check" v-if="step > 3"></i><span v-else>3</span></div>
+                <div class="step-label">Payment</div>
+            </div>
+        </div>
+
+        <!-- Step 1: Cart Items -->
+        <div v-if="step === 1">
+            <h2 style="margin-bottom: 1.5rem;">Shopping Cart</h2>
+            <div v-if="cart.length === 0" class="text-center"
+                style="padding: 3rem; background: #fff; border-radius: 8px;">
+                <p>Your cart is empty.</p>
+                <a href="products.html" class="btn btn-primary" style="margin-top: 1rem;">Shop Chocolates</a>
+            </div>
+            <div v-else class="cart-grid">
+                <div class="cart-items">
+                    <div v-for="item in cart" :key="item.id" class="cart-item">
+                        <img :src="item.image" :alt="item.name"
+                            onerror="this.src='https://placehold.co/100x100?text=No+Image'">
+                        <div class="item-details">
+                            <h4 class="item-title">{{ item.name }}</h4>
+                            <div class="item-price">₹{{ item.price }}</div>
+                            <div class="quantity-controls">
+                                <button class="qty-btn" @click="updateQuantity(item.id, -1)"><i
+                                        class="fas fa-minus"></i></button>
+                                <span>{{ item.quantity }}</span>
+                                <button class="qty-btn" @click="updateQuantity(item.id, 1)"><i
+                                        class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="remove-btn" @click="removeFromCart(item.id)" title="Remove Item"><i
+                                class="fas fa-trash-alt"></i></div>
+                    </div>
+                </div>
+                <div class="cart-summary summary-card">
+                    <h3 style="margin-bottom: 1.5rem;">Cart Totals</h3>
+
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span>₹{{ subtotal }}</span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span style="font-size: 0.9rem; color: #666; font-style: italic;">Calculated at next step</span>
+                    </div>
+
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <span>₹{{ subtotal }}</span>
+                    </div>
+
+                    <p style="font-size: 0.8rem; color: #777; margin: 0.5rem 0 1.5rem; text-align: right;">
+                        (Excluding Shipping)
+                    </p>
+
+                    <button class="btn btn-primary" style="width: 100%;" @click="step = 2">
+                        Proceed to Checkout <i class="fas fa-arrow-right" style="margin-left: 5px;"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: Shipping Address -->
+        <div v-if="step === 2">
+            <h2 style="margin-bottom: 1.5rem;">Shipping Address</h2>
+            <div class="cart-grid">
+                <div class="summary-card">
+                    <div class="form-grid">
+                        <div class="form-group"><label>Full Name</label><input type="text" v-model="address.name"
+                                placeholder="John Doe"></div>
+                        <div class="form-group"><label>Email</label><input type="email" v-model="address.email"
+                                placeholder="john@example.com"></div>
+                    </div>
+                    <div class="form-group"><label>Street Address</label><input type="text" v-model="address.street"
+                            placeholder="123 Chocolate Lane"></div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>State</label>
+                            <select v-model="address.state">
+                                <option value="" disabled>Select State</option>
+                                <option v-for="(cities, state) in indianStates" :key="state" :value="state">{{ state }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>City</label>
+                            <select v-model="address.city" :disabled="!address.state">
+                                <option value="" disabled>Select City</option>
+                                <option v-for="city in availableCities" :key="city" :value="city">{{ city }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Pincode</label>
+                            <div style="position: relative;">
+                                <input type="text" v-model="address.pincode" maxlength="6" placeholder="400001"
+                                    @input="calculateShipping" style="padding-right: 30px;">
+                                <span v-if="isValidPin"
+                                    style="position: absolute; right: 10px; top: 10px; color: green;"><i
+                                        class="fas fa-check-circle"></i></span>
+                            </div>
+                            <!-- Shiprocket Feedback -->
+                            <div v-if="deliveryDetails" class="delivery-info">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <span><i class="fas fa-truck-fast"></i> <strong>{{ deliveryDetails.days
+                                            }}</strong></span>
+                                    <span class="shiprocket-badge"><i class="fas fa-rocket"></i> Shiprocket</span>
+                                </div>
+                                <div style="font-size: 0.75rem; color: #666; margin-top: 2px;">Fulfilled by Premium
+                                    Courier</div>
+                            </div>
+                            <div v-else-if="address.pincode.length === 6"
+                                style="color: red; font-size: 0.8rem; margin-top: 5px;">Checking availability...</div>
+                        </div>
+                        <div class="form-group"><label>Phone</label><input type="text" v-model="address.phone"
+                                placeholder="9876543210"></div>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+                        <button class="btn btn-outline" @click="step = 1">Back</button>
+                        <button class="btn btn-primary" @click="validateAddress">Review Order <i
+                                class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                <!-- Mini Summary -->
+                <div class="summary-card" style="height: fit-content;">
+                    <h4>Order Summary</h4>
+                    <p>{{ cart.length }} Items</p>
+                    <div class="item-row"><span>Subtotal</span><span>₹{{ subtotal }}</span></div>
+                    <div class="item-row"><span>Shipping</span><span :style="{color: shipping===0?'green':'inherit'}">{{
+                            shipping === 0 ? 'Free' : '₹'+shipping }}</span></div>
+                    <div class="summary-total"><span>Total</span><span>₹{{ total }}</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Payment & Review -->
+        <div v-if="step === 3">
+            <h2 style="margin-bottom: 1.5rem;">Review & Pay</h2>
+            <div class="cart-grid">
+                <div>
+                    <!-- Address Review -->
+                    <div class="summary-card" style="margin-bottom: 1rem;">
+                        <h4 style="margin-bottom: 0.5rem; color: var(--color-primary);">Shipping To</h4>
+                        <p><strong>{{ address.name }}</strong></p>
+                        <p>{{ address.street }}</p>
+                        <p>{{ address.city }}, {{ address.state }} - {{ address.pincode }}</p>
+                        <p>{{ address.phone }}</p>
+                        <button class="btn"
+                            style="padding: 0; color: var(--color-secondary); font-size: 0.9rem; margin-top: 0.5rem;"
+                            @click="step = 2">Edit Address</button>
+                    </div>
+
+                    <!-- Payment Method -->
+                    <div class="summary-card">
+                        <h4 style="margin-bottom: 1rem;">Select Payment Method</h4>
+                        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                            <label class="payment-option-label">
+                                <input type="radio" v-model="paymentMethod" value="card">
+                                <span><i class="fas fa-credit-card" style="margin-right: 8px;"></i> Credit/Debit
+                                    Card</span>
+                            </label>
+                            <label class="payment-option-label">
+                                <input type="radio" v-model="paymentMethod" value="upi">
+                                <span><i class="fas fa-mobile-alt" style="margin-right: 8px;"></i> UPI /
+                                    NetBanking</span>
+                            </label>
+                            <label class="payment-option-label">
+                                <input type="radio" v-model="paymentMethod" value="cod">
+                                <span><i class="fas fa-money-bill-wave" style="margin-right: 8px;"></i> Cash on
+                                    Delivery</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Final Summary -->
+                <div class="summary-card" style="height: fit-content;">
+                    <h3 style="margin-bottom: 1rem;">Total to Pay</h3>
+                    <div class="item-row"><span>Subtotal</span><span>₹{{ subtotal }}</span></div>
+                    <div class="item-row"><span>Shipping</span><span :style="{color: shipping===0?'green':'inherit'}">{{
+                            shipping === 0 ? 'Free' : '₹'+shipping }}</span></div>
+                    <div class="summary-total" style="font-size: 1.5rem;"><span>Total</span><span>₹{{ total }}</span>
+                    </div>
+
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 1rem; padding: 1rem;"
+                        @click="processPayment">
+                        <i class="fas fa-lock"></i> Pay ₹{{ total }}
+                    </button>
+                    <p style="text-align: center; font-size: 0.8rem; margin-top: 1rem; color: #999;">Secure SSL
+                        Encryption</p>
+                </div>
+            </div>
+            <button class="btn btn-outline" style="margin-top: 1rem;" @click="step = 2">Back</button>
+        </div>
+
+        <!-- Step 4: Success -->
+        <div v-if="step === 4" class="success-view">
+            <div class="check-icon"><i class="fas fa-check-circle"></i></div>
+            <h1>Order Placed Successfully!</h1>
+            <p style="font-size: 1.2rem; color: #666; margin-bottom: 1rem;">Thank you, {{ address.name }}! Your
+                chocolates are on the way.</p>
+            <div
+                style="background: #f9f9f9; display: inline-block; padding: 1rem 2rem; border-radius: 8px; margin-bottom: 2rem;">
+                <p><strong>Order ID:</strong> {{ orderId }}</p>
+                <p><strong>Transaction ID:</strong> {{ transactionId }}</p>
+            </div>
+            <div>
+                <a href="index.html" class="btn btn-primary">Continue Shopping</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Newsletter -->
+    <section class="section" style="background-color: var(--color-primary); color: #fff; margin-top: 4rem;">
+        <div class="container text-center">
+            <h2 style="color: var(--color-secondary);">Join the Club</h2>
+            <p style="color: rgba(255,255,255,0.8); margin-bottom: 2rem;">Subscribe to receive updates, access to
+                exclusive deals, and more.</p>
+            <form style="max-width: 500px; margin: 0 auto; display: flex; gap: 10px;">
+                <input type="email" placeholder="Enter your email address"
+                    style="flex: 1; padding: 1rem; border: none; border-radius: 4px; outline: none;">
+                <button type="submit" class="btn"
+                    style="background: var(--color-secondary); color: var(--color-primary);">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="logo.jpg" alt="Choco Blossom"
+                        style="width: 140px; margin-bottom: 1rem; border-radius: 8px;">
+                    <p style="color: rgba(255,255,255,0.7);">Crafting memories with premium chocolates since 2010. Based
+                        in Mumbai, delivering happiness nationwide.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Shop All</a></li>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Customer Care</h4>
+                    <ul class="footer-links">
+                        <li><a href="shipping.html">Shipping Policy</a></li>
+                        <li><a href="returns.html">Returns & Refunds</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="#">Track Order</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-links">
+                        <li style="color: rgba(255,255,255,0.8); display: flex; gap: 10px;">
+                            <i class="fas fa-map-marker-alt" style="margin-top: 5px;"></i>
+                            <span>28, Saurasthra Society, Paldi, Ahmedabad, Gujarat 380007</span>
+                        </li>
+                        <li style="color: rgba(255,255,255,0.8);"><i class="fas fa-phone" style="width: 20px;"></i> +91
+                            92270 88688</li>
+                        <li style="color: rgba(255,255,255,0.8);"><i class="fas fa-envelope" style="width: 20px;"></i>
+                            chocoblossom12@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div style="text-align: left;">
+                    <p>&copy; 2026 Choco Blossom. All rights reserved.</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.2rem;">Based in Ahmedabad, Gujarat</p>
+                </div>
+                <div class="payment-icons">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-amex"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    step: 1,
+                    cart: [],
+                    shipping: 0,
+                    paymentMethod: 'card',
+                    address: {
+                        name: '', email: '', street: '', city: '', state: '', pincode: '', phone: ''
+                    },
+                    orderId: '',
+                    transactionId: '',
+                    deliveryDetails: null,
+                    isValidPin: false,
+                    // Comprehensive List of Indian States & Cities
+                    indianStates: {
+                        "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Nashik", "Aurangabad", "Thane", "Solapur"],
+                        "Delhi": ["New Delhi", "North Delhi", "South Delhi", "East Delhi", "West Delhi"],
+                        "Karnataka": ["Bangalore", "Mysore", "Hubli", "Mangalore", "Belgaum"],
+                        "Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Gandhinagar"],
+                        "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli", "Salem"],
+                        "West Bengal": ["Kolkata", "Howrah", "Durgapur", "Asansol", "Siliguri"],
+                        "Telangana": ["Hyderabad", "Warangal", "Nizamabad", "Karimnagar"],
+                        "Rajasthan": ["Jaipur", "Jodhpur", "Udaipur", "Kota", "Bikaner"],
+                        "Uttar Pradesh": ["Lucknow", "Kanpur", "Varanasi", "Agra", "Noida", "Ghaziabad"],
+                        "Haryana": ["Gurgaon", "Faridabad", "Panipat", "Ambala", "Karnal"],
+                        "Punjab": ["Chandigarh", "Ludhiana", "Amritsar", "Jalandhar", "Patiala"],
+                        "Kerala": ["Kochi", "Thiruvananthapuram", "Kozhikode", "Thrissur", "Kollam"],
+                        "Goa": ["Panaji", "Margao", "Vasco da Gama", "Mapusa"],
+                        "Madhya Pradesh": ["Bhopal", "Indore", "Gwalior", "Jabalpur", "Ujjain"],
+                        "Andhra Pradesh": ["Visakhapatnam", "Vijayawada", "Guntur", "Nellore", "Tirupati"],
+                        "Odisha": ["Bhubaneswar", "Cuttack", "Rourkela", "Berhampur"],
+                        "Bihar": ["Patna", "Gaya", "Bhagalpur", "Muzaffarpur"],
+                        "Jharkhand": ["Ranchi", "Jamshedpur", "Dhanbad", "Bokaro"],
+                        "Chhattisgarh": ["Raipur", "Bhilai", "Bilaspur", "Korba"],
+                        "Assam": ["Guwahati", "Silchar", "Dibrugarh", "Jorhat"],
+                        "Uttarakhand": ["Dehradun", "Haridwar", "Roorkee", "Haldwani"]
+                    },
+                    availableCities: []
+                };
+            },
+            watch: {
+                'address.state': function (newState) {
+                    if (newState && this.indianStates[newState]) {
+                        this.availableCities = this.indianStates[newState];
+                        // Reset city if not in new state
+                        if (!this.availableCities.includes(this.address.city)) {
+                            this.address.city = '';
+                        }
+                    } else {
+                        this.availableCities = [];
+                    }
+                }
+            },
+            computed: {
+                subtotal() {
+                    return this.cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+                },
+                total() {
+                    return this.subtotal + this.shipping;
+                }
+            },
+            mounted() {
+                this.loadCart();
+                window.renderCart = () => { };
+                window.updateCartMetadata();
+            },
+            methods: {
+                loadCart() {
+                    this.cart = JSON.parse(localStorage.getItem('chocoCart')) || [];
+                },
+                saveCart() {
+                    localStorage.setItem('chocoCart', JSON.stringify(this.cart));
+                    window.updateCartMetadata();
+                },
+                updateQuantity(id, change) {
+                    const item = this.cart.find(i => i.id === id);
+                    if (item) {
+                        item.quantity += change;
+                        if (item.quantity <= 0) this.cart = this.cart.filter(i => i.id !== id);
+                        this.saveCart();
+                    }
+                },
+                removeFromCart(id) {
+                    this.cart = this.cart.filter(i => i.id !== id);
+                    this.saveCart();
+                },
+                calculateShipping() {
+                    const pin = this.address.pincode;
+                    this.deliveryDetails = null;
+                    this.isValidPin = false;
+
+                    if (pin.length === 6 && /^\d{6}$/.test(pin)) {
+                        this.isValidPin = true;
+
+                        // Auto-select State & City based on Pincode (Mock Logic)
+                        const pinPrefix = pin.substring(0, 3);
+                        let autoState = '';
+                        let autoCity = '';
+
+                        // Simple Map for correct dropdown selection
+                        const pinMap = {
+                            '400': { s: 'Maharashtra', c: 'Mumbai' }, // Mumbai
+                            '411': { s: 'Maharashtra', c: 'Pune' },   // Pune
+                            '110': { s: 'Delhi', c: 'New Delhi' },    // Delhi
+                            '560': { s: 'Karnataka', c: 'Bangalore' }, // Bangalore
+                            '600': { s: 'Tamil Nadu', c: 'Chennai' },  // Chennai
+                            '700': { s: 'West Bengal', c: 'Kolkata' }, // Kolkata
+                            '500': { s: 'Telangana', c: 'Hyderabad' }, // Hyderabad
+                            '380': { s: 'Gujarat', c: 'Ahmedabad' }    // Ahmedabad
+                        };
+
+                        if (pinMap[pinPrefix]) {
+                            this.address.state = pinMap[pinPrefix].s;
+                            // Wait for watcher to update cities
+                            this.$nextTick(() => {
+                                this.address.city = pinMap[pinPrefix].c;
+                            });
+                        }
+
+                        // Simulate Shiprocket API Delay
+                        setTimeout(() => {
+                            const isMetro = ['400', '110', '560', '600', '700'].some(p => pin.startsWith(p));
+
+                            // Shipping Cost Logic
+                            if (this.subtotal > 2500) {
+                                this.shipping = 0;
+                            } else {
+                                this.shipping = isMetro ? 60 : 120;
+                            }
+
+                            // Date Calculation
+                            const today = new Date();
+                            const daysToAdd = isMetro ? 2 : 5;
+                            const deliveryDate = new Date(today);
+                            let added = 0;
+                            while (added < daysToAdd) {
+                                deliveryDate.setDate(deliveryDate.getDate() + 1);
+                                if (deliveryDate.getDay() !== 0) added++;
+                            }
+
+                            const options = { weekday: 'short', day: 'numeric', month: 'short' };
+                            const dateString = deliveryDate.toLocaleDateString('en-IN', options);
+
+                            // Area Name Logic (Mock)
+                            let areaName = "Standard Delivery";
+                            if (this.address.city) areaName = this.address.city + " Region";
+                            if (pin === '400001') areaName = "Fort, Mumbai";
+
+                            this.deliveryDetails = {
+                                partner: "Shiprocket Xpress",
+                                days: `Arriving by ${dateString}`,
+                                city: areaName
+                            };
+                        }, 800);
+                    } else {
+                        if (this.subtotal <= 2500) this.shipping = 0;
+                    }
+                },
+                validateAddress() {
+                    const { name, email, street, city, state, pincode } = this.address;
+                    if (!name || !email || !street || !city || !state || !pincode) {
+                        alert("Please fill in all address fields.");
+                        return;
+                    }
+                    if (!/^\d{6}$/.test(pincode)) {
+                        alert("Invalid Pincode");
+                        return;
+                    }
+                    this.calculateShipping();
+                    this.step = 3;
+                },
+                async processPayment() {
+                    // Simulate processing
+                    const txnId = 'TXN' + Date.now();
+
+                    const orderData = {
+                        customer_name: this.address.name,
+                        customer_email: this.address.email,
+                        shipping_address: this.address,
+                        total_amount: this.total,
+                        items: this.cart,
+                        payment_status: 'Paid',
+                        payment_method: this.paymentMethod,
+                        transaction_id: txnId
+                    };
+
+                    try {
+                        const res = await fetch('http://localhost:3000/api/orders', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(orderData)
+                        });
+                        const result = await res.json();
+
+                        if (result.message === 'success') {
+                            this.orderId = result.id;
+                            this.transactionId = txnId;
+                            this.cart = [];
+                            this.saveCart();
+                            this.step = 4;
+                            this.fireConfetti();
+                        } else {
+                            alert("Order Failed: " + (result.error || 'Unknown Error'));
+                        }
+                    } catch (e) {
+                        alert("Network Error: Please ensure the backend server is running (run start_app.bat).");
+                        console.error(e);
+                    }
+                },
+                fireConfetti() {
+                    confetti({
+                        particleCount: 150,
+                        spread: 70,
+                        origin: { y: 0.6 }
+                    });
+                }
+            }
+        }).mount('#checkout-app');
+    </script>
+</body>
+
+</html>
