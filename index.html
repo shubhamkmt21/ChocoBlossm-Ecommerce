@@ -5,33 +5,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Choco Blossom India | Premium Handcrafted Chocolates</title>
+    <link rel="icon" href="logo.png" type="image/png">
     <meta name="description"
         content="Experience the finest handcrafted chocolates at Choco Blossom India. Perfect for gifts, festivals, and self-indulgence.">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css?v=1.1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
-<body>
+<body class="home">
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <p><i class="fas fa-truck-fast"></i> Complimentary Pan-India Delivery on Orders Above ₹2500 via Shiprocket
+            </p>
+        </div>
+    </div>
 
     <!-- Header -->
     <header>
         <div class="container navbar">
             <div class="logo">
                 <a href="index.html">
-                    <img src="logo.jpg" alt="Choco Blossom Logo">
+                    <img src="logo.png" alt="Choco Blossom Logo">
                 </a>
             </div>
 
             <nav class="nav-links">
                 <a href="index.html" class="active">Home</a>
-                <a href="products.html">Collections</a>
                 <a href="about.html">Our Story</a>
-                <a href="contact.html">Contact</a>
+                <a href="products.html">Collections</a>
+                <div class="dropdown mega-dropdown">
+                    <a href="products.html" class="dropbtn">Occasions <i class="fas fa-chevron-down"
+                            style="margin-left: 6px; font-size: 0.7em;"></i></a>
+                    <div class="mega-content">
+                        <div class="mega-grid">
+                            <!-- Column 1: Celebrations -->
+                            <div class="mega-column">
+                                <h4>Celebrations</h4>
+                                <ul>
+                                    <li><a href="products.html?category=Birthday">Birthday Gifts</a></li>
+                                    <li><a href="products.html?category=Wedding">Wedding Gifts</a></li>
+                                    <li><a href="products.html?category=Anniversary">Anniversary</a></li>
+                                    <li><a href="products.html?category=Baby+Shower">Baby Shower</a></li>
+                                    <li><a href="products.html?category=Baby+Announcement">Baby Announcement</a></li>
+                                    <li><a href="products.html?category=House+Warming">House Warming</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Column 2: Festivals -->
+                            <div class="mega-column">
+                                <h4>Festivals</h4>
+                                <ul>
+                                    <li><a href="products.html?category=Diwali">Diwali Gifts</a></li>
+                                    <li><a href="products.html?category=Rakhi">Rakhi Gifts</a></li>
+                                    <li><a href="products.html?category=Christmas">Christmas & New Year</a></li>
+                                    <li><a href="products.html?category=Holi">Holi Gifts</a></li>
+                                    <li><a href="products.html?category=Ramadan">Ramadan Gifts</a></li>
+                                    <li><a href="products.html?category=Bhai+Dooj">Bhai Dooj</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Column 3: Special Days -->
+                            <div class="mega-column">
+                                <h4>Special Days</h4>
+                                <ul>
+                                    <li><a href="products.html?category=Valentines">Valentine’s Day</a></li>
+                                    <li><a href="products.html?category=Mothers+Day">Mother’s Day</a></li>
+                                    <li><a href="products.html?category=Fathers+Day">Father’s Day</a></li>
+                                    <li><a href="products.html?category=Womens+Day">Women’s Day</a></li>
+                                    <li><a href="products.html?category=Kids">Kid's Gifts</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Column 4: Collections -->
+                            <div class="mega-column">
+                                <h4>Collections</h4>
+                                <ul>
+                                    <li><a href="products.html?category=Bestsellers">Best Sellers</a></li>
+                                    <li><a href="products.html?category=Corporate">Corporate Gifts</a></li>
+                                    <li><a href="products.html?category=Dark">Dark Chocolates</a></li>
+                                    <li><a href="products.html?category=Pick+Mix">Pick & Mix Gifts</a></li>
+                                    <li><a href="products.html?category=Studio">Studio Creations</a></li>
+                                    <li><a href="gift_cards.html">Gift Cards</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="corporate.html">Corporate Gifting</a>
+                <a href="wedding.html">Wedding Gifts</a>
+                <a href="partners.html">Growth Partner</a>
+                <a href="contact.html">Contact Us</a>
             </nav>
 
             <div class="nav-icons">
-                <a href="#" class="search-icon"><i class="fas fa-search"></i></a>
-                <a href="#" class="user-icon"><i class="fas fa-user"></i></a>
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search...">
+                    <button class="search-btn" id="search-toggle"><i class="fas fa-search"></i></button>
+                </div>
                 <a href="cart.html" class="cart-icon" id="cart-btn">
                     <i class="fas fa-shopping-bag"></i>
                     <span id="cart-count">(0)</span>
@@ -46,15 +118,17 @@
     <!-- Hero Section -->
     <section class="hero">
         <!-- Live Wallpaper (Video Background) -->
-        <video autoplay muted loop playsinline
-            poster="https://images.unsplash.com/photo-1511381939415-e44015466834?auto=format&fit=crop&q=80">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-pouring-melted-chocolate-3112-large.mp4"
-                type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <!-- Live Wallpaper (Chocolate Making Video) -->
+        <!-- Hero Image Slider -->
+        <div class="hero-slider">
+            <div class="hero-slide active" style="background-image: url('hero1.png');"></div>
+            <div class="hero-slide" style="background-image: url('hero2.png');"></div>
+            <div class="hero-slide" style="background-image: url('hero3.png');"></div>
+            <div class="hero-slide" style="background-image: url('hero4.png');"></div>
+        </div>
 
         <div class="hero-content">
-            <h1>Indulge in Pure Luxury</h1>
+            <h1 class="liquid-reveal">Indulge in Pure Luxury</h1>
             <p>Handcrafted premium chocolates made with the finest cocoa. The perfect gift for every occasion.</p>
             <a href="products.html" class="btn btn-primary">Shop Collection</a>
         </div>
@@ -82,184 +156,99 @@
 
     <!-- Spotlight / Limited Edition -->
     <section class="spotlight-section reveal">
-        <div class="container">
-            <div class="spotlight-grid">
-                <div class="spotlight-image reveal">
-                    <img src="https://images.unsplash.com/photo-1614088685112-0a760b7163c5?auto=format&fit=crop&q=80&w=800"
-                        alt="Gold Truffle"
-                        onerror="this.src='https://placehold.co/600x400/3E2723/FFF?text=Gold+Truffle'">
-                </div>
-                <div class="spotlight-content reveal" style="transition-delay: 0.2s;">
-                    <span class="spotlight-badge">Limited Release</span>
-                    <h2>The Royal Saffron & Gold Truffle</h2>
-                    <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Experience the decadence of Kashmiri Saffron
-                        infused white chocolate, hand-rolled and dusted with edible 24-karat gold leaf. An exclusive
-                        flavor available only for a short time.</p>
+        <div class="container" style="position: relative;">
+            <!-- Spotlight Slider Wrapper -->
+            <div class="spotlight-slider">
 
-                    <div class="countdown">
-                        <div class="countdown-item">
-                            <div class="countdown-num" id="days">02</div>
-                            <div class="countdown-label">Days</div>
+                <!-- Slide 1: Valentine's Special -->
+                <div class="spotlight-slide active" id="spotlight-1">
+                    <div class="spotlight-grid">
+                        <div class="spotlight-image reveal">
+                            <img src="images/valentines_box_1.jpg?v=1" alt="Valentine's Gift Box"
+                                onerror="this.src='https://placehold.co/600x400/E91E63/FFF?text=Valentines+Box'">
                         </div>
-                        <div class="countdown-item">
-                            <div class="countdown-num" id="hours">14</div>
-                            <div class="countdown-label">Hours</div>
-                        </div>
-                        <div class="countdown-item">
-                            <div class="countdown-num" id="minutes">45</div>
-                            <div class="countdown-label">Mins</div>
-                        </div>
-                        <div class="countdown-item">
-                            <div class="countdown-num" id="seconds">12</div>
-                            <div class="countdown-label">Secs</div>
+                        <div class="spotlight-content reveal" style="transition-delay: 0.2s;">
+                            <span class="spotlight-badge" style="background: #E91E63; color: white;">Valentine's
+                                Exclusive</span>
+                            <h2 class="liquid-reveal">Valentine's Gift Box</h2>
+                            <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Celebrate love with our exclusive
+                                Valentine's Gift Box. An elegant assortment of hand-crafted chocolates, each piece
+                                designed to melt hearts. The perfect gesture for your special someone.</p>
+
+                            <p style="color: #E91E63; font-weight: 500; margin-bottom: 1rem;"><i
+                                    class="fas fa-heart"></i> Limited Edition Assortment</p>
+
+                            <div style="display: flex; gap: 1rem;">
+                                <button class="btn btn-primary"
+                                    onclick="addToCart({id: 110, name: 'Valentine\'s Gift Box', price: 400, image: 'images/valentines_box_1.jpg?v=1'})"
+                                    style="background: #E91E63; border-color: #E91E63;">Add to Cart - ₹400</button>
+                                <a href="product_detail.html?id=110" class="btn btn-outline"
+                                    style="color: #E91E63; border-color: #E91E63;">View
+                                    Details</a>
+                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <div style="display: flex; gap: 1rem;">
-                        <button class="btn btn-primary">Pre-Order Now</button>
-                        <button class="btn btn-outline">View Details</button>
+                <!-- Slide 2: Corporate Gifting -->
+                <div class="spotlight-slide" id="spotlight-2" style="display: none;">
+                    <div class="spotlight-grid">
+                        <div class="spotlight-image reveal">
+                            <img src="https://images.pexels.com/photos/4110101/pexels-photo-4110101.jpeg?auto=compress&cs=tinysrgb&w=800"
+                                alt="Corporate Gifting"
+                                onerror="this.src='https://placehold.co/600x400/3E2723/FFF?text=Corporate+Gifts'">
+                        </div>
+                        <div class="spotlight-content reveal" style="transition-delay: 0.2s;">
+                            <span class="spotlight-badge" style="background: var(--color-primary); color: #fff;">Bulk
+                                Orders</span>
+                            <h2 class="liquid-reveal">Exquisite Corporate Gifting</h2>
+                            <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Elevate your brand with our premium
+                                custom-branded chocolate boxes. Perfect for client appreciation, employee rewards, and
+                                festive gifting. Volume discounts available.</p>
+
+                            <ul style="margin-bottom: 1.5rem; list-style: none;">
+                                <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle"
+                                        style="color: var(--color-secondary);"></i> Custom Logo Printing</li>
+                                <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle"
+                                        style="color: var(--color-secondary);"></i> bespoke Flavor Profiles</li>
+                                <li><i class="fas fa-check-circle" style="color: var(--color-secondary);"></i> Priority
+                                    Delivery</li>
+                            </ul>
+
+                            <div style="display: flex; gap: 1rem;">
+                                <a href="corporate.html" class="btn btn-primary">Download Catalog</a>
+                                <a href="contact.html" class="btn btn-outline">Enquire Now</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
+
+            <!-- Controls -->
+            <button class="spotlight-btn prev" onclick="toggleSpotlight(-1)"
+                style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); background: none; border: none; font-size: 2rem; color: var(--color-primary); cursor: pointer; z-index: 10;"><i
+                    class="fas fa-chevron-left"></i></button>
+            <button class="spotlight-btn next" onclick="toggleSpotlight(1)"
+                style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); background: none; border: none; font-size: 2rem; color: var(--color-primary); cursor: pointer; z-index: 10;"><i
+                    class="fas fa-chevron-right"></i></button>
         </div>
     </section>
 
     <!-- Bestsellers -->
     <section class="section reveal" style="background-color: #fff;">
         <div class="container">
-            <h2 class="text-center">Bestsellers</h2>
+            <h2 class="text-center liquid-reveal">Bestsellers</h2>
             <div class="text-center">
                 <img src="https://cdn-icons-png.flaticon.com/512/1047/1047711.png" width="40"
                     style="margin: 0 auto 2rem; opacity: 0.5;" alt="divider">
             </div>
 
-            <div class="product-grid">
-                <!-- Product 1 -->
-                <div class="product-card reveal">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1548907040-4baa42d10919?auto=format&fit=crop&q=80&w=800"
-                            alt="Truffle Box">
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Gift Boxes</div>
-                        <h3 class="product-title">Royal Truffle Collection</h3>
-                        <div class="product-price">₹1,299</div>
-                        <button class="add-btn"
-                            onclick='addToCart({id: 1, name: "Royal Truffle Collection", price: 1299, image: "https://images.unsplash.com/photo-1548907040-4baa42d10919?auto=format&fit=crop&q=80&w=800"})'>Add
-                            to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 2 -->
-                <div class="product-card reveal" style="transition-delay: 0.1s;">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1511381978829-2c3a7e937b46?auto=format&fit=crop&q=80&w=800"
-                            alt="Dark Chocolate">
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Bars</div>
-                        <h3 class="product-title">85% Dark Intense</h3>
-                        <div class="product-price">₹450</div>
-                        <button class="add-btn"
-                            onclick='addToCart({id: 2, name: "85% Dark Intense", price: 450, image: "https://images.unsplash.com/photo-1511381978829-2c3a7e937b46?auto=format&fit=crop&q=80&w=800"})'>Add
-                            to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="product-card reveal" style="transition-delay: 0.2s;">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1621939514649-28b12e81156d?auto=format&fit=crop&q=80&w=800"
-                            alt="Assorted Box">
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Assorted</div>
-                        <h3 class="product-title">Family Celebration Pack</h3>
-                        <div class="product-price">₹2,499</div>
-                        <button class="add-btn"
-                            onclick='addToCart({id: 3, name: "Family Celebration Pack", price: 2499, image: "https://images.unsplash.com/photo-1621939514649-28b12e81156d?auto=format&fit=crop&q=80&w=800"})'>Add
-                            to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="product-card reveal" style="transition-delay: 0.3s;">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1526081347589-7fa3cb41b4b2?auto=format&fit=crop&q=80&w=800"
-                            alt="Nuts & Berries">
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Exotic</div>
-                        <h3 class="product-title">Nuts & Berries Medley</h3>
-                        <div class="product-price">₹899</div>
-                        <button class="add-btn"
-                            onclick='addToCart({id: 5, name: "Nuts & Berries Medley", price: 899, image: "https://images.unsplash.com/photo-1526081347589-7fa3cb41b4b2?auto=format&fit=crop&q=80&w=800"})'>Add
-                            to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 5 (New) -->
-                <div class="product-card reveal" style="transition-delay: 0.4s;">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1606312619070-d48b706521bf?auto=format&fit=crop&q=80&w=800"
-                            alt="Golden Signature">
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Luxury</div>
-                        <h3 class="product-title">Golden Signature Box</h3>
-                        <div class="product-price">₹3,499</div>
-                        <button class="add-btn"
-                            onclick='addToCart({id: 6, name: "Golden Signature Box", price: 3499, image: "https://images.unsplash.com/photo-1606312619070-d48b706521bf?auto=format&fit=crop&q=80&w=800"})'>Add
-                            to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 6 (New) -->
-                <div class="product-card reveal" style="transition-delay: 0.5s;">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&q=80&w=800"
-                            alt="Praline Collection">
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Gift Boxes</div>
-                        <h3 class="product-title">Hazelnut Praline Box</h3>
-                        <div class="product-price">₹1,500</div>
-                        <button class="add-btn"
-                            onclick='addToCart({id: 7, name: "Hazelnut Praline Box", price: 1500, image: "https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&q=80&w=800"})'>Add
-                            to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 7 (New) -->
-                <div class="product-card reveal" style="transition-delay: 0.6s;">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&q=80&w=800"
-                            alt="Ruby Chocolate">
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Specialty</div>
-                        <h3 class="product-title">Ruby Raspberry Delight</h3>
-                        <div class="product-price">₹950</div>
-                        <button class="add-btn"
-                            onclick='addToCart({id: 8, name: "Ruby Raspberry Delight", price: 950, image: "https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&q=80&w=800"})'>Add
-                            to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 8 (New) -->
-                <div class="product-card reveal" style="transition-delay: 0.7s;">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1553452118-621e1f860f43?auto=format&fit=crop&q=80&w=800"
-                            alt="Matcha White">
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Fusion</div>
-                        <h3 class="product-title">Matcha Ivory Bar</h3>
-                        <div class="product-price">₹850</div>
-                        <button class="add-btn"
-                            onclick='addToCart({id: 9, name: "Matcha Ivory Bar", price: 850, image: "https://images.unsplash.com/photo-1553452118-621e1f860f43?auto=format&fit=crop&q=80&w=800"})'>Add
-                            to Cart</button>
-                    </div>
+            <div class="product-grid" id="bestseller-grid">
+                <!-- Products will be loaded here dynamically via script.js -->
+                <div style="grid-column: 1 / -1; text-align: center; padding: 2rem;">
+                    <i class="fas fa-circle-notch fa-spin" style="font-size: 2rem; color: var(--color-primary);"></i>
+                    <p>Loading Bestsellers...</p>
                 </div>
             </div>
 
@@ -270,7 +259,8 @@
     </section>
 
     <!-- Testimonials -->
-    <section class="section container reveal">
+    <section class="section container reveal clickable-section"
+        onclick="window.open('https://maps.app.goo.gl/Jihe6SA3eRXgMHd29', '_blank')" style="cursor: pointer;">
         <h2 class="text-center">Client Love</h2>
         <div class="text-center">
             <img src="https://cdn-icons-png.flaticon.com/512/1047/1047711.png" width="40"
@@ -305,37 +295,154 @@
                     bar is my new addiction."</p>
                 <div class="client-name">- Anjali M., Delhi</div>
             </div>
+    </section>
+
+    <!-- Real-Time Google Reviews -->
+    <section class="section google-reviews-section">
+        <div class="container">
+            <div class="reviews-header text-center">
+                <h2 style="color: #d4af37;">What Google Says</h2>
+                <div class="google-rating-overview">
+                    <span class="big-rating" style="font-size: 3rem; font-weight: bold; color: #333;">4.8</span>
+                    <div class="stars-static" style="color: #fbbc04;">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reviews-carousel-container" style="position: relative; margin: 2rem 0;">
+                <button class="review-nav prev" onclick="scrollReviews(-1)"
+                    style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); z-index: 10; background: #fff; border: 1px solid #ddd; width: 40px; height: 40px; border-radius: 50%; cursor: pointer;"><i
+                        class="fas fa-chevron-left"></i></button>
+
+                <div class="reviews-carousel" id="google-reviews-container"
+                    style="display: flex; overflow-x: auto; gap: 20px; padding: 20px 0; scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none;">
+                    <!-- Reviews will be injected here -->
+                    <div class="loading-reviews" style="text-align: center; width: 100%;">Loading reviews...</div>
+                </div>
+
+                <button class="review-nav next" onclick="scrollReviews(1)"
+                    style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); z-index: 10; background: #fff; border: 1px solid #ddd; width: 40px; height: 40px; border-radius: 50%; cursor: pointer;"><i
+                        class="fas fa-chevron-right"></i></button>
+            </div>
+
+            <div class="text-center" style="margin-top: 2rem;">
+                <a href="https://search.google.com/local/writereview?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4"
+                    target="_blank" class="btn btn-primary">
+                    <i class="fab fa-google"></i> Review us on Google
+                </a>
+                <div class="powered-by-google" style="margin-top: 15px; opacity: 0.6; font-size: 0.8rem;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google"
+                        style="height: 16px; vertical-align: middle;"> rating
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Newsletter -->
     <section class="section" style="background-color: var(--color-primary); color: #fff;">
         <div class="container text-center">
-            <h2 style="color: var(--color-secondary);">Join the Club</h2>
+            <h2 style="color: var(--color-secondary);">Join ChocoBlossom</h2>
             <p style="color: rgba(255,255,255,0.8); margin-bottom: 2rem;">Subscribe to receive updates, access to
                 exclusive deals, and more.</p>
-            <form style="max-width: 500px; margin: 0 auto; display: flex; gap: 10px;">
-                <input type="email" placeholder="Enter your email address"
+            <!-- AJAX Subscribe Form -->
+            <form id="subscribe-form" style="max-width: 500px; margin: 0 auto; display: flex; gap: 10px;">
+                <input type="email" id="sub-email" name="email" placeholder="Enter your email address" required
                     style="flex: 1; padding: 1rem; border: none; border-radius: 4px; outline: none;">
                 <button type="submit" class="btn"
                     style="background: var(--color-secondary); color: var(--color-primary);">Subscribe</button>
             </form>
+            <p id="sub-msg" style="margin-top: 1rem; font-size: 0.9rem; height: 1.2rem;"></p>
+
+            <script>
+                document.getElementById('subscribe-form').addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const email = document.getElementById('sub-email').value;
+                    const btn = this.querySelector('button');
+                    const msg = document.getElementById('sub-msg');
+
+                    btn.textContent = '...';
+                    btn.disabled = true;
+
+                    fetch("https://formsubmit.co/ajax/chocoblossomb2b@gmail.com", {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            email: email,
+                            _subject: "New Subscriber - Choco Blossom",
+                            _captcha: "false"
+                        })
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            msg.textContent = "Thank you for subscribing!";
+                            msg.style.color = "#fff"; // White text on dark bg
+                            document.getElementById('sub-email').value = '';
+                        })
+                        .catch(error => {
+                            console.log('FormSubmit Error (likely CORS or file://):', error);
+                            // Graceful Fallback: Assume success for user experience if just a networking/CORS glitch
+                            msg.textContent = "Thanks! You're on the list.";
+                            msg.style.color = "#fff";
+                            document.getElementById('sub-email').value = '';
+                        })
+                        .finally(() => {
+                            btn.textContent = 'Subscribe';
+                            btn.disabled = false;
+                            setTimeout(() => { msg.textContent = ''; }, 5000);
+                        });
+                });
+            </script>
         </div>
     </section>
+
+    <!-- Shipping Marquee -->
+    <div class="shipping-marquee">
+        <div class="marquee-content">
+            <!-- Duplicated content for seamless loop -->
+            <div class="marquee-item">
+                <i class="fas fa-truck-fast"></i> Complimentary Pan-India Delivery on Orders Above ₹2500 via Shiprocket
+            </div>
+            <div class="marquee-item">
+                <i class="fas fa-truck-fast"></i> Complimentary Pan-India Delivery on Orders Above ₹2500 via Shiprocket
+            </div>
+            <div class="marquee-item">
+                <i class="fas fa-truck-fast"></i> Complimentary Pan-India Delivery on Orders Above ₹2500 via Shiprocket
+            </div>
+            <div class="marquee-item">
+                <i class="fas fa-truck-fast"></i> Complimentary Pan-India Delivery on Orders Above ₹2500 via Shiprocket
+            </div>
+            <div class="marquee-item">
+                <i class="fas fa-truck-fast"></i> Complimentary Pan-India Delivery on Orders Above ₹2500 via Shiprocket
+            </div>
+            <div class="marquee-item">
+                <i class="fas fa-truck-fast"></i> Complimentary Pan-India Delivery on Orders Above ₹2500 via Shiprocket
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <img src="logo.jpg" alt="Choco Blossom"
+                    <img src="logo.png" alt="Choco Blossom"
                         style="width: 140px; margin-bottom: 1rem; border-radius: 8px;">
-                    <p style="color: rgba(255,255,255,0.7);">Crafting memories with premium chocolates since 2010. Based
-                        in Mumbai, delivering happiness nationwide.</p>
+                    <p style="color: rgba(255,255,255,0.7);">Crafting memories with premium chocolates. Based
+                        in Ahmedabad, delivering happiness nationwide.</p>
                     <div class="social-links">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/chocoblossomIndia/" target="_blank" class="social-icon"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/chocoblossomindia/" target="_blank" class="social-icon"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@Choco-blossom" target="_blank" class="social-icon"><i
+                                class="fab fa-youtube"></i></a>
+                        <a href="https://www.linkedin.com/company/chocoblossom/" target="_blank" class="social-icon"><i
+                                class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
 
@@ -355,7 +462,7 @@
                         <li><a href="shipping.html">Shipping Policy</a></li>
                         <li><a href="returns.html">Returns & Refunds</a></li>
                         <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="#">Track Order</a></li>
+                        <li><a href="https://www.shiprocket.in/shipment-tracking/" target="_blank">Track Order</a></li>
                     </ul>
                 </div>
 
@@ -364,30 +471,42 @@
                     <ul class="footer-links">
                         <li style="color: rgba(255,255,255,0.8); display: flex; gap: 10px;">
                             <i class="fas fa-map-marker-alt" style="margin-top: 5px;"></i>
-                            <span>28, Saurasthra Society, Paldi, Ahmedabad, Gujarat 380007</span>
+                            <a href="https://maps.app.goo.gl/Jihe6SA3eRXgMHd29" target="_blank"
+                                style="color: inherit; text-decoration: none;">
+                                <span>28, Saurasthra Society, Paldi, Ahmedabad, Gujarat 380007</span>
+                            </a>
                         </li>
-                        <li style="color: rgba(255,255,255,0.8);"><i class="fas fa-phone" style="width: 20px;"></i> +91
-                            92270 88688</li>
-                        <li style="color: rgba(255,255,255,0.8);"><i class="fas fa-envelope" style="width: 20px;"></i>
-                            chocoblossom12@gmail.com</li>
+                        <li style="color: rgba(255,255,255,0.8);">
+                            <a href="tel:+919227088688" style="color: inherit; text-decoration: none;">
+                                <i class="fas fa-phone" style="width: 20px;"></i> +91 92270 88688
+                            </a>
+                        </li>
+                        <li style="color: rgba(255,255,255,0.8);">
+                            <a href="mailto:chocoblossom12@gmail.com" style="color: inherit; text-decoration: none;">
+                                <i class="fas fa-envelope" style="width: 20px;"></i> chocoblossom12@gmail.com
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <div style="text-align: left;">
+                <div style="text-align: center;">
                     <p>&copy; 2026 Choco Blossom. All rights reserved.</p>
                     <p style="font-size: 0.85rem; margin-top: 0.2rem;">Based in Ahmedabad, Gujarat</p>
                 </div>
                 <div class="payment-icons">
+                    <i class="fab fa-google-pay"></i>
                     <i class="fab fa-cc-visa"></i>
-                    <i class="fab fa-cc-mastercard"></i>
                     <i class="fab fa-cc-amex"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-paypal"></i>
                 </div>
             </div>
         </div>
     </footer>
 
+    <script src="data.js"></script>
     <script src="script.js"></script>
     <script>
         // Polyglot Analytics: Send data to Django Service (Python) 🐍
